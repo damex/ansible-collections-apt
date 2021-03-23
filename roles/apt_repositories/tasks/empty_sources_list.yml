@@ -1,0 +1,11 @@
+---
+- name: "ensure apt repositories sources.list is empty"
+  ansible.builtin.copy:
+    content: ""
+    dest: "{{ apt_repositories_sources_list_configuration_file }}"
+    group: "root"
+    owner: "root"
+    mode: "0644"
+  notify: "ensure apt cache"
+  become: true
+  when: "apt_repositories_empty_sources_list"

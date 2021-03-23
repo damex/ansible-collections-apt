@@ -1,24 +1,12 @@
 ---
-- name: "ensure apt repository sources"
-  block:
-    - name: "ensure apt repositories sources.list is empty"
-      ansible.builtin.copy:
-        content: ""
-        dest: "{{ apt_repositories_sources_list_configuration_file }}"
-        group: "root"
-        owner: "root"
-        mode: "0644"
-      notify: "ensure apt cache"
-      when: "apt_repositories_empty_sources_list"
-    - name: "ensure apt repositories sources.list.d"
-      ansible.builtin.template:
-        src: "sources.list.j2"
-        dest: "{{ apt_repositories_sources_list_dot_d_configuration_directory }}/{{ apt_repository.name }}.list"
-        group: "root"
-        owner: "root"
-        mode: "0644"
-      loop: "{{ apt_repositories }}"
-      loop_control:
-        loop_var: "apt_repository"
-      notify: "ensure apt cache"
-  become: true
+- name: "ensure apt repositories"
+  ansible.builtin.include_tasks: "repository.yml"
+  vars:
+    apt_repository_name: "{{ apt_repository.name | mandatory }}"
+    apt_repository_url: "{{ apt_repository.url | mandatory }}"
+    apt_repository_components: "{{ apt_repository.components | mandatory }}"
+    apt_repository_state: "{{ apt_repository.state | default(apt_repositories_state) }}"
+  loop: "{{ apt_repositories }}"
+  loop_control:
+    label: "{{ apt_repository_name }}"
+    loop_var: "apt_repository"
