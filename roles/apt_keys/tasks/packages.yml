@@ -1,0 +1,8 @@
+---
+- name: "ensure apt keys packages"
+  include_role:
+    name: "damex.apt.apt_packages"
+  vars:
+    apt_packages:
+      - name: "gpg"
+      - name: "gpg-agent"

@@ -1,0 +1,10 @@
+---
+- name: "ensure apt cache valid time"
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: "{{ apt_cache_valid_time }}"
+    force_apt_get: "{{ apt_cache_force_apt_get }}"
+  become: true
+
+- name: "ensure apt cache is up to date"
+  ansible.builtin.meta: "flush_handlers"

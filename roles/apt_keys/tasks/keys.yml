@@ -1,0 +1,10 @@
+---
+- name: "ensure apt keys"
+  ansible.builtin.apt_key:
+    id: "{{ apt_key.id }}"
+    url: "{{ apt_key.url }}"
+    state: "{{ apt_key.state | default(apt_keys_state) }}"
+  loop: "{{ apt_keys }}"
+  loop_control:
+    loop_var: "apt_key"
+  become: true

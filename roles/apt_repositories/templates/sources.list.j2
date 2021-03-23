@@ -1,0 +1,2 @@
+{{ ansible_managed | comment }}
+deb {{ apt_repository.url }} {{ apt_repository.components | join(' ') }}
