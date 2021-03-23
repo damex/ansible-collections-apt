@@ -1,0 +1,20 @@
+---
+- name: "ensure apt package"
+  block:
+    - name: "ensure apt package with any version"
+      ansible.builtin.apt:
+        pkg: "{{ apt_package_name }}"
+        install_recommends: "{{ apt_package_install_recommends }}"
+        purge: "{{ apt_package_purge }}"
+        force_apt_get: "{{ apt_package_force_apt_get }}"
+        state: "{{ apt_package_state }}"
+      when: "not apt_package_version"
+    - name: "ensure apt package with fixed version"
+      ansible.builtin.apt:
+        pkg: "{{ apt_package_name }}={{ apt_package_version }}"
+        install_recommends: "{{ apt_package_install_recommends }}"
+        purge: "{{ apt_package_purge }}"
+        force_apt_get: "{{ apt_package_force_apt_get }}"
+        state: "{{ apt_package_state }}"
+      when: "apt_package_version"
+  become: true
