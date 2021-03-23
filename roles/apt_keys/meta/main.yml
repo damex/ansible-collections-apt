@@ -11,4 +11,5 @@ galaxy_info:
     - name: "Ubuntu"
       versions:
         - "focal"
-dependencies: []
+dependencies:
+  - "damex.apt.apt_cache"
