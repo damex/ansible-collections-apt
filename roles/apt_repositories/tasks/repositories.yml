@@ -3,8 +3,9 @@
   ansible.builtin.include_tasks: "repository.yml"
   vars:
     apt_repository_name: "{{ apt_repository.name | mandatory }}"
+    apt_repository_file: "{{ apt_repository.file | default(apt_repository_name) }}"
     apt_repository_url: "{{ apt_repository.url | mandatory }}"
-    apt_repository_distribution: "{{ apt_repository.distribution | default(apt_repository.name) }}"
+    apt_repository_distribution: "{{ apt_repository.distribution | default(apt_repository_name) }}"
     apt_repository_components: "{{ apt_repository.components | mandatory }}"
     apt_repository_state: "{{ apt_repository.state | default(apt_repositories_state) }}"
   loop: "{{ apt_repositories }}"

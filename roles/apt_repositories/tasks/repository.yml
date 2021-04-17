@@ -1,8 +1,8 @@
 ---
-- name: "ensure {{ apt_repository_name }} apt repository {{ apt_repository_name }}.list"
+- name: "ensure {{ apt_repository_name }} apt repository {{ apt_repository_file }}.list"
   ansible.builtin.template:
     src: "sources.list.j2"
-    dest: "{{ apt_repositories_sources_list_dot_d_configuration_directory }}/{{ apt_repository_name }}.list"
+    dest: "{{ apt_repositories_sources_list_dot_d_configuration_directory }}/{{ apt_repository_file }}.list"
     group: "root"
     owner: "root"
     mode: "0644"
