@@ -6,5 +6,6 @@
     install_recommends: "{{ apt_package_install_recommends }}"
     purge: "{{ apt_package_purge }}"
     force_apt_get: "{{ apt_package_force_apt_get }}"
+    lock_timeout: "{{ apt_package_lock_timeout }}"
     state: "{{ apt_package_state }}"
   become: true

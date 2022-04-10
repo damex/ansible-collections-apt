@@ -7,6 +7,7 @@
     apt_package_install_recommends: "{{ apt_package.install_recommends | default(apt_packages_install_recommends) }}"
     apt_package_purge: "{{ apt_package.purge | default(apt_packages_purge) }}"
     apt_package_force_apt_get: "{{ apt_package.force_apt_get | default(apt_packages_force_apt_get) }}"
+    apt_package_lock_timeout: "{{ apt_package.lock_timeout | default(apt_packages_lock_timeout) }}"
     apt_package_state: "{{ apt_package.state | default(apt_packages_state) }}"
   loop: "{{ apt_packages }}"
   loop_control:
