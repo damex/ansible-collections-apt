@@ -7,5 +7,5 @@ authors:
   - Roman Kuzmitskii <ansible@damex.org>
 license_file: LICENSE
 tags:
-  - "apt"
+  - apt
 repository: https://github.com/damex/ansible-collections-apt
