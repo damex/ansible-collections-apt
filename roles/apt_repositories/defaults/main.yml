@@ -2,5 +2,5 @@
 apt_repositories: []
 apt_repositories_force_apt_get: true
 apt_repositories_empty_sources_list: false
-apt_repositories_sources_list_configuration_file: "/etc/apt/sources.list"
-apt_repositories_sources_list_dot_d_configuration_directory: "/etc/apt/sources.list.d"
+apt_repositories_sources_list_configuration_file: /etc/apt/sources.list
+apt_repositories_sources_list_dot_d_configuration_directory: /etc/apt/sources.list.d

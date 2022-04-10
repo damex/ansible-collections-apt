@@ -1,10 +1,10 @@
 ---
-- name: "ensure apt repositories"
+- name: ensure apt repositories
   block:
-    - name: "ensure apt repositories sources.list is empty"
-      ansible.builtin.import_tasks: "empty_sources_list.yml"
-    - name: "ensure apt repositories"
-      ansible.builtin.import_tasks: "repositories.yml"
+    - name: ensure apt repositories sources.list is empty
+      ansible.builtin.import_tasks: empty_sources_list.yml
+    - name: ensure apt repositories
+      ansible.builtin.import_tasks: repositories.yml
   tags:
-    - "apt"
-    - "apt_repositories"
+    - apt
+    - apt_repositories

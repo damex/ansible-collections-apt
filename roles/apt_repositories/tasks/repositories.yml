@@ -1,6 +1,6 @@
 ---
-- name: "ensure apt repositories"
-  ansible.builtin.include_tasks: "repository.yml"
+- name: ensure apt repositories
+  ansible.builtin.include_tasks: repository.yml
   vars:
     apt_repository_name: "{{ apt_repository.name | mandatory }}"
     apt_repository_file: "{{ apt_repository.file | default(apt_repository_name) }}"
@@ -11,4 +11,4 @@
   loop: "{{ apt_repositories }}"
   loop_control:
     label: "{{ apt_repository_name }}"
-    loop_var: "apt_repository"
+    loop_var: apt_repository
