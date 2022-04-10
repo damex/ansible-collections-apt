@@ -1,6 +1,6 @@
 ---
-- name: "ensure apt packages"
-  ansible.builtin.include_tasks: "package.yml"
+- name: ensure apt packages
+  ansible.builtin.include_tasks: package.yml
   vars:
     apt_package_name: "{{ apt_package.name | default(apt_package) }}"
     apt_package_version: "{{ apt_package.version | default('') }}"
@@ -11,4 +11,4 @@
   loop: "{{ apt_packages }}"
   loop_control:
     label: "{{ apt_package_name }}"
-    loop_var: "apt_package"
+    loop_var: apt_package

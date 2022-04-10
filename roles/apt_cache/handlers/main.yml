@@ -1,5 +1,5 @@
 ---
-- name: "ensure apt cache"
+- name: ensure apt cache
   ansible.builtin.apt:
     update_cache: true
     force_apt_get: "{{ apt_cache_force_apt_get }}"

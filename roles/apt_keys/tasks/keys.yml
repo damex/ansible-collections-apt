@@ -1,11 +1,11 @@
 ---
-- name: "ensure apt keys"
+- name: ensure apt keys
   ansible.builtin.apt_key:
     id: "{{ apt_key.id }}"
     url: "{{ apt_key.url }}"
     state: "{{ apt_key.state | default(apt_keys_state) }}"
-  notify: "ensure apt cache"
+  notify: ensure apt cache
   loop: "{{ apt_keys }}"
   loop_control:
-    loop_var: "apt_key"
+    loop_var: apt_key
   become: true
