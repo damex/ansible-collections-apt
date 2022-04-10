@@ -2,6 +2,7 @@
 - name: ensure {{ apt_package_name }} apt package
   ansible.builtin.apt:
     pkg: "{% if apt_package_version and apt_package_version | length %}{{ apt_package_name }}={{ apt_package_version }}{% else %}{{ apt_package_name }}{% endif %}"
+    allow_downgrade: "{{ apt_package_allow_downgrade }}"
     install_recommends: "{{ apt_package_install_recommends }}"
     purge: "{{ apt_package_purge }}"
     force_apt_get: "{{ apt_package_force_apt_get }}"
