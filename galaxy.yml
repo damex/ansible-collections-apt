@@ -1,11 +1,12 @@
 ---
 namespace: damex
 name: apt
-version: 0.1.11
+version: 0.1.12
 readme: README.md
 authors:
   - Roman Kuzmitskii <ansible@damex.org>
 license_file: LICENSE
 tags:
   - apt
+  - system
 repository: https://github.com/damex/ansible-collections-apt
