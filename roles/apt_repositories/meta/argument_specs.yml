@@ -1,0 +1,22 @@
+---
+argument_specs:
+  main:
+    options:
+      apt_repositories:
+        type: list
+        required: true
+        elements: dict
+        options:
+          name:
+            required: true
+            type: str
+          url:
+            required: true
+            type: str
+          distribution:
+            required: true
+            type: str
+          components:
+            required: true
+            type: list
+            elements: str
