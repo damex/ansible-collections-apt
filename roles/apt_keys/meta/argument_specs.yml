@@ -1,0 +1,18 @@
+---
+argument_specs:
+  main:
+    options:
+      apt_keys:
+        type: list
+        required: true
+        elements: dict
+        options:
+          id:
+            required: true
+            type: str
+          url:
+            required: true
+            type: str
+          state:
+            required: false
+            type: str
