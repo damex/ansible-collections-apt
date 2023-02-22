@@ -13,4 +13,4 @@ galaxy_info:
       versions:
         - focal
 dependencies:
-  - damex.apt.apt_cache
+  - name: damex.apt.apt_cache
