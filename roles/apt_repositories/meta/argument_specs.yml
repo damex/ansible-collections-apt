@@ -10,13 +10,19 @@ argument_specs:
           name:
             required: true
             type: str
+          file:
+            required: false
+            type: str
           url:
             required: true
             type: str
           distribution:
-            required: true
+            required: false
             type: str
           components:
             required: true
             type: list
             elements: str
+          state:
+            required: false
+            type: str
