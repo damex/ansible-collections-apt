@@ -1,8 +1,8 @@
 ---
-- name: ensure apt packages
+- name: Ensure apt packages
   tags:
     - apt
     - apt_packages
   block:
-    - name: ensure apt packages
+    - name: Ensure apt packages
       ansible.builtin.import_tasks: packages.yml

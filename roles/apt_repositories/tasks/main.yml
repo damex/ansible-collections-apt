@@ -1,10 +1,10 @@
 ---
-- name: ensure apt repositories
+- name: Ensure apt repositories
   tags:
     - apt
     - apt_repositories
   block:
-    - name: ensure apt repositories sources.list is empty
+    - name: Ensure apt repositories sources.list is empty
       ansible.builtin.import_tasks: empty_sources_list.yml
-    - name: ensure apt repositories
+    - name: Ensure apt repositories
       ansible.builtin.import_tasks: repositories.yml

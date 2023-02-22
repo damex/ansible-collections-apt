@@ -1,5 +1,5 @@
 ---
-- name: ensure apt keys
+- name: Ensure apt keys
   ansible.builtin.apt_key:
     id: "{{ apt_key.id }}"
     url: "{{ apt_key.url }}"

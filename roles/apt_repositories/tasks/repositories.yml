@@ -1,5 +1,5 @@
 ---
-- name: ensure apt repositories
+- name: Ensure apt repositories
   ansible.builtin.include_tasks: repository.yml
   vars:
     apt_repository_name: "{{ apt_repository.name | mandatory }}"

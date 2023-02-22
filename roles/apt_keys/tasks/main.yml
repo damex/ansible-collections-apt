@@ -1,10 +1,10 @@
 ---
-- name: ensure apt keys
+- name: Ensure apt keys
   tags:
     - apt
     - apt_keys
   block:
-    - name: ensure apt keys packages
+    - name: Ensure apt keys packages
       ansible.builtin.import_tasks: packages.yml
-    - name: ensure apt keys
+    - name: Ensure apt keys
       ansible.builtin.import_tasks: keys.yml

@@ -1,5 +1,5 @@
 ---
-- name: ensure apt repositories sources.list is empty
+- name: Ensure apt repositories sources.list is empty
   ansible.builtin.copy:
     content: ""
     dest: "{{ apt_repositories_sources_list_configuration_file }}"
