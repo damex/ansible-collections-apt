@@ -1,5 +1,5 @@
 ---
-- name: Ensure {{ apt_package_name }} apt package
+- name: Ensure apt package {{ apt_package_name }}
   ansible.builtin.apt:
     pkg: "{% if apt_package_version and apt_package_version | length %}{{ apt_package_name }}={{ apt_package_version }}{% else %}{{ apt_package_name }}{% endif %}"
     allow_downgrade: "{{ apt_package_allow_downgrade }}"
