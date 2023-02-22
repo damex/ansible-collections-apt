@@ -5,6 +5,7 @@ version: 0.1.14
 readme: README.md
 authors:
   - Roman Kuzmitskii <ansible@damex.org>
+description: apt collection
 license_file: LICENSE
 tags:
   - apt
