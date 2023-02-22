@@ -2,7 +2,7 @@
 - name: Ensure apt packages
   ansible.builtin.include_tasks: package.yml
   vars:
-    apt_package_name: "{{ apt_package.name | default(apt_package) }}"
+    apt_package_name: "{{ apt_package.name }}"
     apt_package_version: "{{ apt_package.version | default('') }}"
     apt_package_install_recommends: "{{ apt_package.install_recommends | default(apt_packages_install_recommends) }}"
     apt_package_allow_downgrade: "{{ apt_package.allow_downgrade | default(apt_packages_allow_downgrade) }}"

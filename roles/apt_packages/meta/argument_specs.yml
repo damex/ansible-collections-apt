@@ -1,0 +1,33 @@
+---
+argument_specs:
+  main:
+    options:
+      apt_packages:
+        type: list
+        required: true
+        elements: dict
+        options:
+          name:
+            required: true
+            type: str
+          version:
+            required: false
+            type: str
+          install_recommends:
+            required: false
+            type: bool
+          allow_downgrade:
+            required: false
+            type: bool
+          purge:
+            required: false
+            type: bool
+          force_apt_get:
+            required: false
+            type: bool
+          lock_timeout:
+            required: false
+            type: int
+          state:
+            required: false
+            type: str
