@@ -8,6 +8,7 @@ authors:
 license_file: LICENSE
 tags:
   - apt
+  - linux
   - system
 repository: https://github.com/damex/ansible-collections-apt
 issues: https://github.com/damex/ansible-collections-apt/issues
