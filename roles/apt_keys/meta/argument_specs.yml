@@ -16,6 +16,10 @@ argument_specs:
           state:
             required: false
             type: str
+            default: present
+            choices:
+              - absent
+              - present
       apt_keys_state:
         type: str
         required: false
