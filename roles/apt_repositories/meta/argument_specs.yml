@@ -28,8 +28,8 @@ argument_specs:
             type: str
             default: present
             choices:
-             - absent
-             - present
+              - absent
+              - present
       apt_repositories_force_apt_get:
         type: bool
         default: true
