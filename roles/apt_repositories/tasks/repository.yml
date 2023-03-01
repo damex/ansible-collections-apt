@@ -1,5 +1,5 @@
 ---
-- name: Ensure apt repository {{ apt_repository_name }} is present
+- name: Ensure apt repository {{ apt_repository_name }}
   ansible.builtin.template:
     src: sources.list.j2
     dest: "{{ apt_repositories_sources_list_dot_d_configuration_directory }}/{{ apt_repository_file }}.list"
@@ -10,7 +10,7 @@
   notify: Ensure apt cache
   become: true
 
-- name: Ensure apt repository {{ apt_repository_name }} is absent
+- name: Ensure apt repository {{ apt_repository_name }}
   ansible.builtin.file:
     path: "{{ apt_repositories_sources_list_dot_d_configuration_directory }}/{{ apt_repository_file }}.list"
     state: "{{ apt_repository_state }}"
