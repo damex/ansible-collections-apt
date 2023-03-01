@@ -16,18 +16,27 @@ argument_specs:
           install_recommends:
             required: false
             type: bool
+            default: false
           allow_downgrade:
             required: false
             type: bool
+            default: false
           purge:
             required: false
             type: bool
+            default: true
           force_apt_get:
             required: false
             type: bool
+            default: true
           lock_timeout:
             required: false
             type: int
+            default: 60
           state:
             required: false
             type: str
+            default: present
+            choices:
+              - absent
+              - present
