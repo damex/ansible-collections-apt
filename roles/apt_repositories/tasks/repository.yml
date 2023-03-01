@@ -1,10 +1,19 @@
 ---
-- name: Ensure apt repository {{ apt_repository_name }}
+- name: Ensure apt repository {{ apt_repository_name }} is present
   ansible.builtin.template:
     src: sources.list.j2
     dest: "{{ apt_repositories_sources_list_dot_d_configuration_directory }}/{{ apt_repository_file }}.list"
     group: root
     owner: root
     mode: "0644"
+  when: apt_repository_state == "present"
+  notify: ensure apt cache
+  become: true
+
+- name: Ensure apt repository {{ apt_repository_name }} is absent
+  ansible.builtin.file:
+    path: "{{ apt_repositories_sources_list_dot_d_configuration_directory }}/{{ apt_repository_file }}.list"
+    state: "{{ apt_repository_state }}"
+  when: apt_repository_state == "absent"
   notify: ensure apt cache
   become: true
