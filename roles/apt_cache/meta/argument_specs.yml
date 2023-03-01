@@ -1,0 +1,16 @@
+---
+argument_specs:
+  main:
+    options:
+      apt_cache_valid_time:
+        type: int
+        required: false
+      apt_cache_update_cache_retries:
+        type: int
+        required: false
+      apt_cache_update_cache_retry_max_delay:
+        type: int
+        required: false
+      apt_cache_force_apt_get:
+        type: bool
+        required: false
