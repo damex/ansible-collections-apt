@@ -6,6 +6,6 @@
     group: root
     owner: root
     mode: "0644"
-  notify: ensure apt cache
+  notify: Ensure apt cache
   become: true
   when: apt_repositories_empty_sources_list
