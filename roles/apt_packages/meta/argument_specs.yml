@@ -13,6 +13,9 @@ argument_specs:
           version:
             required: false
             type: str
+          default_release:
+            required: false
+            type: str
           install_recommends:
             required: false
             type: bool

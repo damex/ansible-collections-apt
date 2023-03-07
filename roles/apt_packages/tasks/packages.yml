@@ -4,6 +4,7 @@
   vars:
     apt_package_name: "{{ apt_package.name }}"
     apt_package_version: "{{ apt_package.version | default('') }}"
+    apt_package_default_release: "{{ apt_package.default_release | default(omit) }}"
     apt_package_install_recommends: "{{ apt_package.install_recommends | default(apt_packages_install_recommends) }}"
     apt_package_allow_downgrade: "{{ apt_package.allow_downgrade | default(apt_packages_allow_downgrade) }}"
     apt_package_purge: "{{ apt_package.purge | default(apt_packages_purge) }}"
