@@ -7,5 +7,5 @@
     purge: "{{ apt_package_purge }}"
     force_apt_get: "{{ apt_package_force_apt_get }}"
     lock_timeout: "{{ apt_package_lock_timeout }}"
-    state: "{{ apt_package_state }}"
+    state: "{% if apt_package_version == 'latest' and apt_package_state == 'present' %}latest{% else %}{{ apt_package_state }}{% endif %}"
   become: true
