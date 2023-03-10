@@ -1,7 +1,7 @@
 ---
 - name: Ensure apt package {{ apt_package_name }}
   ansible.builtin.apt:
-    pkg: "{% if apt_package_version and apt_package_version | length %}{{ apt_package_name }}={{ apt_package_version }}{% else %}{{ apt_package_name }}{% endif %}"
+    pkg: "{% if apt_package_version and apt_package_version | length and apt_package_version != 'latest' %}{{ apt_package_name }}={{ apt_package_version }}{% else %}{{ apt_package_name }}{% endif %}"
     default_release: "{{ apt_package_default_release | default(omit) }}"
     allow_downgrade: "{{ apt_package_allow_downgrade }}"
     install_recommends: "{{ apt_package_install_recommends }}"
