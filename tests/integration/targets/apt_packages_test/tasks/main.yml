@@ -1,0 +1,38 @@
+---
+- name: ensure ansible package is present
+  ansible.builtin.include_role:
+    name: damex.apt.apt_packages
+  vars:
+    apt_packages:
+      - name: ansible
+        version: 2.5.1+dfsg-1ubuntu0.1
+        state: present
+
+- name: ensure apt packages facts are collected
+  ansible.builtin.package_facts:
+    manager: apt
+  register: apt_packages_facts
+
+- name: ensure correct ansible package is installed
+  ansible.builtin.fail:
+    msg: ""
+  when: not apt_packages_facts.ansible_facts.packages.ansible or
+        apt_packages_facts.ansible_facts.packages.ansible[0]['version'] != "2.5.1+dfsg-1ubuntu0.1"
+
+- name: ensure ansible package is absent
+  ansible.builtin.include_role:
+    name: damex.apt.apt_packages
+  vars:
+    apt_packages:
+      - name: ansible
+        state: absent
+
+- name: ensure apt packages facts are collected
+  ansible.builtin.package_facts:
+    manager: apt
+  register: apt_packages_facts
+
+- name: ensure ansible package is removed
+  ansible.builtin.fail:
+    msg: ""
+  when: "'ansible' in apt_packages_facts.ansible_facts.packages"
