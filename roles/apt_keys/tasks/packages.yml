@@ -3,6 +3,6 @@
   ansible.builtin.include_role:
     name: damex.apt.apt_packages
   vars:
-    apt_packages:
+    apt_packages: # noqa: var-naming[no-role-prefix]
       - name: gpg
       - name: gpg-agent
