@@ -1,5 +1,5 @@
 ---
-apt_repositories: []
+apt_repositories: [] # noqa: var-naming[no-role-prefix]
 apt_repositories_force_apt_get: true
 apt_repositories_empty_sources_list: false
 apt_repositories_state: present
