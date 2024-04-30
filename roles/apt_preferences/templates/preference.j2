@@ -1,0 +1,4 @@
+{{ ansible_managed | comment }}
+Package: {{ apt_preference_package_names | default([apt_preference_package_name]) | join(' ') }}
+Pin: {{ apt_preference_pin }}
+Pin-Priority: {{ apt_preference_pin_priority }}

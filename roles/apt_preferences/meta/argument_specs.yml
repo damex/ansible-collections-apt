@@ -1,0 +1,30 @@
+---
+argument_specs:
+  main:
+    options:
+      apt_preferences:
+        type: list
+        required: true
+        elements: dict
+        options:
+          name:
+            required: true
+            type: str
+          package_name:
+            type: str
+          package_names:
+            type: list
+            elements: str
+          pin:
+            required: true
+            type: str
+          pin_priority:
+            required: true
+            type: int
+          state:
+            required: false
+            type: str
+            default: present
+            choices:
+              - absent
+              - present

@@ -1,0 +1,8 @@
+---
+- name: Ensure apt preferences
+  tags:
+    - apt
+    - apt_preferences
+  block:
+    - name: Ensure apt preferences
+      ansible.builtin.import_tasks: preferences.yml

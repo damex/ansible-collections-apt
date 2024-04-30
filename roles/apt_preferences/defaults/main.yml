@@ -1,0 +1,4 @@
+---
+apt_preferences: [] # noqa: var-naming[no-role-prefix]
+apt_preferences_preferences_dot_d_configuration_directory: /etc/apt/preferences.d
+apt_preferences_state: present
