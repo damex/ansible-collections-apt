@@ -1,0 +1,19 @@
+---
+- name: Ensure apt preference {{ apt_preference_name }}
+  ansible.builtin.template:
+    src: preference.j2
+    dest: "{{ apt_preferences_preferences_dot_d_configuration_directory }}/{{ apt_preference_name }}"
+    group: root
+    owner: root
+    mode: "0644"
+  when: apt_preference_state == "present"
+  notify: Ensure apt cache
+  become: true
+
+- name: Ensure apt preference {{ apt_preference_name }}
+  ansible.builtin.file:
+    path: "{{ apt_preferences_preferences_dot_d_configuration_directory }}/{{ apt_preference_name }}"
+    state: absent
+  when: apt_preference_state == "absent"
+  notify: Ensure apt cache
+  become: true

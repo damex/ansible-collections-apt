@@ -1,0 +1,14 @@
+---
+- name: Ensure apt preferences
+  ansible.builtin.include_tasks: preference.yml
+  vars:
+    apt_preference_name: "{{ apt_preference.name }}"
+    apt_preference_package_name: "{{ apt_preference.package_name | default(apt_preference_name) }}"
+    apt_preference_package_names: "{{ apt_preference.package_names | default(omit) }}"
+    apt_preference_pin: "{{ apt_preference.pin }}"
+    apt_preference_pin_priority: "{{ apt_preference.pin_priority }}"
+    apt_preference_state: "{{ apt_preference.state | default(apt_preferences_state) }}"
+  loop: "{{ apt_preferences }}"
+  loop_control:
+    label: "{{ apt_preference_name }}"
+    loop_var: apt_preference
