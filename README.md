@@ -8,6 +8,9 @@ The apt collection is designed to be used with any modern Debian Linux derivativ
 
 `ansible-galaxy collection install damex.apt`
 
+## Included Roles
+* damex.apt_keys [damex.apt_keys](roles/apt_keys/README.md)
+
 You can report bugs or feature requests at:
 
 * https://github.com/damex/ansible-collections-apt/issues
