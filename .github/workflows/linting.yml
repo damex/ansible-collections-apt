@@ -2,7 +2,6 @@
 name: linting
 on: # yamllint disable-line rule:truthy
   - push
-  - pull_request
 
 jobs:
   ansible-lint:
