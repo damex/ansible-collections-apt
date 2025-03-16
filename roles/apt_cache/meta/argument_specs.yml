@@ -4,17 +4,9 @@ argument_specs:
     options:
       apt_cache_valid_time:
         type: int
-        required: false
-        default: 86400
       apt_cache_update_cache_retries:
         type: int
-        required: false
-        default: 5
       apt_cache_update_cache_retry_max_delay:
         type: int
-        required: false
-        default: 12
       apt_cache_force_apt_get:
         type: bool
-        required: false
-        default: true
