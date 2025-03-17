@@ -4,7 +4,6 @@ argument_specs:
     options:
       apt_keys:
         type: list
-        required: true
         elements: dict
         options:
           id:
@@ -14,16 +13,12 @@ argument_specs:
             required: true
             type: str
           state:
-            required: false
             type: str
-            default: present
             choices:
               - absent
               - present
       apt_keys_state:
         type: str
-        required: false
-        default: present
         choices:
           - absent
           - present
