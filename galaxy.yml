@@ -1,7 +1,7 @@
 ---
 namespace: damex
 name: apt
-version: 1.4.6
+version: 1.4.7
 readme: README.md
 authors:
   - Roman Kuzmitskii <ansible@damex.org>
