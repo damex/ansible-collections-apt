@@ -4,41 +4,32 @@ argument_specs:
     options:
       apt_repositories:
         type: list
-        required: true
         elements: dict
         options:
           name:
             required: true
             type: str
           file:
-            required: false
             type: str
           url:
             required: true
             type: str
           distribution:
-            required: false
             type: str
           components:
             required: true
             type: list
             elements: str
           state:
-            required: false
             type: str
-            default: present
             choices:
               - absent
               - present
       apt_repositories_force_apt_get:
         type: bool
-        default: true
       apt_repositories_empty_sources_list:
         type: bool
-        default: false
       apt_repositories_sources_list_configuration_file:
         type: str
-        default: /etc/apt/sources.list
       apt_repositories_sources_list_dot_d_configuration_directory:
         type: str
-        default: /etc/apt/sources.list.d
