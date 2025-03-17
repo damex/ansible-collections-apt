@@ -4,7 +4,6 @@ argument_specs:
     options:
       apt_preferences:
         type: list
-        required: true
         elements: dict
         options:
           name:
@@ -22,9 +21,7 @@ argument_specs:
             required: true
             type: int
           state:
-            required: false
             type: str
-            default: present
             choices:
               - absent
               - present
