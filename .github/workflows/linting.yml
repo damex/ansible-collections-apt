@@ -1,17 +1,24 @@
 ---
 name: linting
 on: # yamllint disable-line rule:truthy
-  - push
+  push:
+    branches:
+      - production
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
 
 jobs:
   ansible-lint:
     name: ansible-lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: "3.14"
       - run: pip install --user pipenv
       - run: make pipenv
       - run: pipenv run ansible-lint
@@ -19,10 +26,10 @@ jobs:
     name: yamllint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: "3.14"
       - run: pip install --user pipenv
       - run: make pipenv
       - run: pipenv run yamllint -s .
