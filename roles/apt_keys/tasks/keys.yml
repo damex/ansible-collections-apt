@@ -1,11 +1,11 @@
 ---
 - name: Ensure apt keys
-  ansible.builtin.apt_key:
-    id: "{{ apt_key.id }}"
-    url: "{{ apt_key.url }}"
-    state: "{{ apt_key.state | default(apt_keys_state) }}"
-  notify: Ensure apt cache
+  ansible.builtin.include_tasks: key.yml
+  vars:
+    apt_key_id: "{{ apt_key.id }}"
+    apt_key_url: "{{ apt_key.url }}"
+    apt_key_state: "{{ apt_key.state | default(apt_keys_state) }}"
   loop: "{{ apt_keys }}"
   loop_control:
+    label: "{{ apt_key_id }}"
     loop_var: apt_key
-  become: true

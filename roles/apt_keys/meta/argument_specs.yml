@@ -17,6 +17,8 @@ argument_specs:
             choices:
               - absent
               - present
+      apt_keys_directory:
+        type: path
       apt_keys_state:
         type: str
         choices:
