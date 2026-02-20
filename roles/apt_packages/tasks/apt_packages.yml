@@ -1,0 +1,49 @@
+---
+- name: Ensure apt packages groups are empty
+  ansible.builtin.set_fact:
+    apt_packages_absent: []
+    apt_packages_unversioned: []
+    apt_packages_versioned: []
+    apt_packages_latest: []
+
+- name: Ensure apt packages are grouped
+  ansible.builtin.include_tasks: apt_packages_groups.yml
+  vars:
+    apt_package_name: "{{ apt_package.name }}"
+    apt_package_version: "{{ apt_package.version | default(omit) }}"
+    apt_package_state: "{{ apt_package.state | default(apt_packages_state) }}"
+  loop: "{{ apt_packages }}"
+  loop_control:
+    label: "{{ apt_package_name }}"
+    loop_var: apt_package
+
+- name: Ensure apt packages
+  module_defaults:
+    ansible.builtin.apt:
+      purge: "{{ apt_packages_purge }}"
+      install_recommends: "{{ apt_packages_install_recommends }}"
+      allow_downgrade: "{{ apt_packages_allow_downgrade }}"
+      force_apt_get: "{{ apt_packages_force_apt_get }}"
+      lock_timeout: "{{ apt_packages_lock_timeout }}"
+  become: true
+  block:
+    - name: Ensure apt packages with absent state
+      ansible.builtin.apt:
+        pkg: "{{ apt_packages_absent }}"
+        state: absent
+      when: apt_packages_absent | length > 0
+    - name: Ensure apt packages with unversioned present state
+      ansible.builtin.apt:
+        pkg: "{{ apt_packages_unversioned }}"
+        state: present
+      when: apt_packages_unversioned | length > 0
+    - name: Ensure apt packages with versioned present state
+      ansible.builtin.apt:
+        pkg: "{{ apt_packages_versioned }}"
+        state: present
+      when: apt_packages_versioned | length > 0
+    - name: Ensure apt packages with latest state # noqa package-latest
+      ansible.builtin.apt:
+        pkg: "{{ apt_packages_latest }}"
+        state: latest
+      when: apt_packages_latest | length > 0

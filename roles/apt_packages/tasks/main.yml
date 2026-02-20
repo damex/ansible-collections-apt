@@ -5,4 +5,4 @@
     - apt_packages
   block:
     - name: Ensure apt packages
-      ansible.builtin.import_tasks: packages.yml
+      ansible.builtin.import_tasks: apt_packages.yml

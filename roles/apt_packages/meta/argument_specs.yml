@@ -11,18 +11,6 @@ argument_specs:
             type: str
           version:
             type: str
-          default_release:
-            type: str
-          install_recommends:
-            type: bool
-          allow_downgrade:
-            type: bool
-          purge:
-            type: bool
-          force_apt_get:
-            type: bool
-          lock_timeout:
-            type: int
           state:
             type: str
             choices:
