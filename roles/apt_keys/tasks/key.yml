@@ -1,0 +1,44 @@
+---
+- name: Ensure apt key file state {{ apt_key_id }}
+  ansible.builtin.stat:
+    path: "{{ apt_keys_directory }}/{{ apt_key_id }}.gpg"
+  register: apt_keys_key_file_state
+  become: true
+
+- name: Ensure apt key is present
+  when:
+    - apt_key_state == "present"
+    - not apt_keys_key_file_state.stat.exists
+  block:
+    - name: Ensure apt key temporary directory {{ apt_key_id }}
+      ansible.builtin.tempfile:
+        state: directory
+        suffix: "{{ apt_key_id }}"
+      become: true
+      register: apt_keys_key_temporary_directory_state
+    - name: Ensure apt key url content {{ apt_key_id }}
+      ansible.builtin.get_url:
+        url: "{{ apt_key_url }}"
+        dest: "{{ apt_keys_key_temporary_directory_state.path }}/{{ apt_key_id }}"
+        mode: "0644"
+      become: true
+      register: apt_keys_key_url_state
+    - name: Ensure apt key {{ apt_key_id }}
+      ansible.builtin.command:
+        cmd: gpg --dearmor -o "{{ apt_keys_directory }}/{{ apt_key_id }}.gpg" "{{ apt_keys_key_temporary_directory_state.path }}/{{ apt_key_id }}"
+        creates: "{{ apt_keys_directory }}/{{ apt_key_id }}.gpg"
+      become: true
+  always:
+    - name: Ensure apt key temporary directory is absent {{ apt_key_id }}
+      ansible.builtin.file:
+        path: "{{ apt_keys_key_temporary_directory_state.path }}"
+        state: absent
+      become: true
+      when: apt_keys_key_temporary_directory_state is success
+
+- name: Ensure apt key is absent {{ apt_key_id }}
+  ansible.builtin.file:
+    path: "{{ apt_keys_directory }}/{{ apt_key_id }}.gpg"
+    state: absent
+  become: true
+  when: apt_key_state == "absent"

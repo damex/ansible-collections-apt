@@ -1,3 +1,4 @@
 ---
 apt_keys: [] # noqa: var-naming[no-role-prefix]
+apt_keys_directory: /etc/apt/trusted.gpg.d
 apt_keys_state: present
