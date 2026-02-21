@@ -11,8 +11,8 @@ on: # yamllint disable-line rule:truthy
       - reopened
 
 jobs:
-  ansible-lint:
-    name: ansible-lint
+  lint:
+    name: lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -21,15 +21,4 @@ jobs:
           python-version: "3.14"
       - run: pip install --user pipenv
       - run: make pipenv
-      - run: pipenv run ansible-lint
-  yamllint:
-    name: yamllint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.14"
-      - run: pip install --user pipenv
-      - run: make pipenv
-      - run: pipenv run yamllint -s .
+      - run: pipenv run lint
