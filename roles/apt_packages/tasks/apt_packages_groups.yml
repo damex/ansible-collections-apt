@@ -1,0 +1,32 @@
+---
+- name: Ensure apt package is absent {{ apt_package_name }}
+  ansible.builtin.set_fact:
+    apt_packages_absent: "{{ apt_packages_absent + [apt_package_name] }}"
+  when:
+    - apt_package_state == 'absent'
+
+- name: Ensure apt package is unversioned {{ apt_package_name }}
+  ansible.builtin.set_fact:
+    apt_packages_unversioned: "{{ apt_packages_unversioned + [apt_package_name] }}"
+  when:
+    - apt_package_state == 'present'
+    # workaround for omit
+    - apt_package_version is not iterable
+
+- name: Ensure apt package is versioned {{ apt_package_name }}
+  ansible.builtin.set_fact:
+    apt_packages_versioned: "{{ apt_packages_versioned + [apt_package_name + '=' + apt_package_version] }}"
+  when:
+    - apt_package_state == 'present'
+    - apt_package_version is defined
+    # workaround for omit
+    - apt_package_version is iterable
+    - apt_package_version != 'latest'
+
+- name: Ensure apt package is latest {{ apt_package_name }}
+  ansible.builtin.set_fact:
+    apt_packages_latest: "{{ apt_packages_latest + [apt_package_name] }}"
+  when:
+    - apt_package_state == 'present'
+    - apt_package_version is defined
+    - apt_package_version == 'latest'
