@@ -7,6 +7,6 @@ galaxy_info:
   platforms:
     - name: Debian
       versions:
-        - bookworm
+        - all
 dependencies:
   - name: damex.apt.apt_cache
