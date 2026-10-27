@@ -19,6 +19,11 @@ argument_specs:
           components:
             type: list
             elements: str
+          format:
+            type: str
+            choices:
+              - deb822
+              - legacy
           state:
             type: str
             choices:
@@ -28,6 +33,11 @@ argument_specs:
         type: bool
       apt_repositories_empty_sources_list:
         type: bool
+      apt_repositories_format:
+        type: str
+        choices:
+          - deb822
+          - legacy
       apt_repositories_sources_list_configuration_file:
         type: str
       apt_repositories_sources_list_dot_d_configuration_directory:
