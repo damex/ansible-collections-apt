@@ -1,0 +1,7 @@
+{{ ansible_managed | comment }}
+Types: deb
+URIs: {{ apt_repository_url }}
+Suites: {{ apt_repository_distribution }}
+{% if apt_repository_components is iterable %}
+Components: {{ apt_repository_components | join(' ') }}
+{% endif %}
